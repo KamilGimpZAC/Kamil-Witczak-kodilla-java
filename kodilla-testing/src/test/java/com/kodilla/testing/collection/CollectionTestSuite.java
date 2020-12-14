@@ -27,7 +27,7 @@ public class CollectionTestSuite {
         //When
         Object result = emptyList.exterminate(null);
         //Then
-        Assertions.assertEquals("List is empty", result);
+        Assertions.assertNull(result);
     }
 
     @DisplayName("when create List, " +
@@ -44,6 +44,5 @@ public class CollectionTestSuite {
         filledList.exterminate(fList);
         //Then
         Assertions.assertEquals(checkList, fList);
-
     }
 }

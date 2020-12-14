@@ -5,7 +5,7 @@ import java.util.List;
 public class OddNumbersExterminator {
 
     public Object exterminate(List<Integer> numbers) {
-        //List<Integer> listEven = null;
+        List<Integer> emptyList = null;
         if (numbers != null) {
             for (Integer storageNumber : numbers) {
                 if (storageNumber % 2 != 0) {
@@ -14,7 +14,7 @@ public class OddNumbersExterminator {
             }
             return numbers;
         } else {
-            return "List is empty";
+            return emptyList;
         }
     }
 }
