@@ -10,7 +10,7 @@ public class ShapeCollector {
 
     }
 
-    public Object getFigure(int n){
+    public Shape getFigure(int n){
     return null;
     }
 

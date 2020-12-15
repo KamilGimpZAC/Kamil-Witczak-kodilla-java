@@ -23,11 +23,12 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatorEmptyList(){
         //Given
-        OddNumbersExterminator emptyList = new OddNumbersExterminator();
+        OddNumbersExterminator input = new OddNumbersExterminator();
+        List<Integer> emptyList = new ArrayList<>();
         //When
-        Object result = emptyList.exterminate(null);
+        List<Integer> expected = input.exterminate(emptyList);
         //Then
-        Assertions.assertNull(result);
+        Assertions.assertTrue(expected.isEmpty());
     }
 
     @DisplayName("when create List, " +
@@ -37,12 +38,17 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatorNormalList(){
         //Given
-        List<Integer> fList = List.of(3,5,31,73,4);
-        List<Integer> checkList = List.of(4);
+        List<Integer> input = new ArrayList<>(){{
+            add(13);
+            add(6);
+            add(7);
+            add(2);
+        }};
+        List<Integer> expected = List.of(6,2);
         OddNumbersExterminator filledList = new OddNumbersExterminator();
         //When
-        filledList.exterminate(fList);
+        List<Integer> output = filledList.exterminate(input);
         //Then
-        Assertions.assertEquals(checkList, fList);
+        Assertions.assertEquals(expected, output);
     }
 }
