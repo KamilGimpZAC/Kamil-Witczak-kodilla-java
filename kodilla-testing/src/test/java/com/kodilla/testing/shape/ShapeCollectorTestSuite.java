@@ -28,44 +28,46 @@ public class ShapeCollectorTestSuite {
     @Test
     void testAddFigure(){
         //Given
-        ShapeCollector testList = new ShapeCollector();
-        List<Shape> expectedList = new LinkedList<>();
-        expectedList.add(new Circle());
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Shape circle = new Circle();
         //When
-        testList.addFigure(new Circle());
+        shapeCollector.addFigure(new Circle());
         //Then
-        Assertions.assertEquals(expectedList, testList);
+        Assertions.assertEquals(circle, shapeCollector.getFigure(0));
     }
 
     @Test
     void testRemoveFigure(){
         //Given
-        ShapeCollector testList = new ShapeCollector();
-        testList.addFigure(new Square());
+        ShapeCollector shapeCollector = new ShapeCollector();
+        shapeCollector.addFigure(new Square());
         //When
-        testList.removeFigure(new Square());
+        boolean result = shapeCollector.removeFigure(new Square());
         //Then
-        Assertions.assertEquals(null, testList);
+        Assertions.assertTrue(result);
     }
 
     @Test
     void testGetFigure(){
         //Given
-        ShapeCollector testList = new ShapeCollector();
-        Circle circle = new Circle();
-        testList.addFigure(new Circle());
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Shape circle = new Circle();
+        shapeCollector.addFigure(new Circle());
         //When
-        Object expectedObject = testList.getFigure(0);
+        Shape output = shapeCollector.getFigure(0);
         //Then
-        Assertions.assertEquals(circle, expectedObject);
+        Assertions.assertEquals(circle, output);
     }
 
     @Test
     void testShowFigures(){
         //Given
-
+        ShapeCollector shapeCollector = new ShapeCollector();
+        shapeCollector.addFigure(new Triangle());
+        shapeCollector.addFigure(new Square());
         //When
-
+        String output = shapeCollector.showFigures();
         //Then
+        Assertions.assertEquals("", output);
     }
 }
