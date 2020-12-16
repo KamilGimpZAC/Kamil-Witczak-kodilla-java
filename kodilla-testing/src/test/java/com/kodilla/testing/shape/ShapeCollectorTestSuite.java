@@ -7,6 +7,10 @@ import java.util.List;
 
 public class ShapeCollectorTestSuite {
 
+    Shape inputCircle = new Circle();
+    Shape inputSquare = new Square();
+    Shape inputTriangle = new Square();
+
     private static int testCounter = 0;
 
     @BeforeAll
@@ -29,45 +33,43 @@ public class ShapeCollectorTestSuite {
     void testAddFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape circle = new Circle();
         //When
-        shapeCollector.addFigure(new Circle());
+        shapeCollector.addFigure(inputCircle);
         //Then
-        Assertions.assertEquals(circle, shapeCollector.getFigure(0));
+        Assertions.assertEquals(inputCircle, shapeCollector.getFigure(0));
     }
 
     @Test
     void testRemoveFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(new Square());
+        shapeCollector.addFigure(inputSquare);
         //When
-        boolean result = shapeCollector.removeFigure(new Square());
+        boolean output = shapeCollector.removeFigure(inputSquare);
         //Then
-        Assertions.assertTrue(result);
+        Assertions.assertTrue(output);
     }
 
     @Test
     void testGetFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape circle = new Circle();
-        shapeCollector.addFigure(new Circle());
+        shapeCollector.addFigure(inputCircle);
         //When
         Shape output = shapeCollector.getFigure(0);
         //Then
-        Assertions.assertEquals(circle, output);
+        Assertions.assertEquals(inputCircle, output);
     }
 
     @Test
     void testShowFigures(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(new Triangle());
-        shapeCollector.addFigure(new Square());
+        shapeCollector.addFigure(inputTriangle);
+        shapeCollector.addFigure(inputSquare);
         //When
         String output = shapeCollector.showFigures();
         //Then
-        Assertions.assertEquals("", output);
+        Assertions.assertEquals(inputTriangle.toString() + inputSquare.toString(), output);
     }
 }

@@ -12,4 +12,9 @@ public class Square implements Shape{
     public int getField() {
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + getShapeName() + ", field: " + getField() + " ";
+    }
 }
