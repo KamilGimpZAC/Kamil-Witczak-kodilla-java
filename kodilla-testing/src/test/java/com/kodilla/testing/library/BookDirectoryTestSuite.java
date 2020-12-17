@@ -118,10 +118,13 @@ class BookDirectoryTestSuite {
             //Given
             LibraryUser libraryUser = new LibraryUser("Jhon", "Smith", "12345");
             BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+            List<Book> emptyList = new ArrayList<>();
+            when(libraryDatabaseMock.listBooksInHandsOf(libraryUser))
+                    .thenReturn(emptyList);
             //When
             List<Book> output = bookLibrary.listBooksInHandsOf(libraryUser);
             //Then
-            assertTrue(output.isEmpty());
+            assertEquals(0,output.size());
         }
 
         @Test
@@ -129,6 +132,9 @@ class BookDirectoryTestSuite {
             //Given
             LibraryUser libraryUser = new LibraryUser("Tom", "Hanks", "12345");
             BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+            List<Book> listWithOneBook = generateListOfNBooks(1);
+            when(libraryDatabaseMock.listBooksInHandsOf(libraryUser))
+                    .thenReturn(listWithOneBook);
             //When
             List<Book> output = bookLibrary.listBooksInHandsOf(libraryUser);
             //Then
@@ -141,10 +147,12 @@ class BookDirectoryTestSuite {
             LibraryUser libraryUser = new LibraryUser("David", "Morse", "12345");
             BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
             List<Book> listWithFiveBooks = generateListOfNBooks(5);
+            when(libraryDatabaseMock.listBooksInHandsOf(libraryUser))
+                    .thenReturn(listWithFiveBooks);
             //When
             List<Book> output = bookLibrary.listBooksInHandsOf(libraryUser);
             //Then
-            assertEquals(listWithFiveBooks,output);
+            assertEquals(5,output.size());
         }
     }
 }
