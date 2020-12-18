@@ -1,7 +1,6 @@
 package com.kodilla.testing.statistics;
 
 import com.kodilla.testing.forum.statistics.Statistics;
-import java.util.List;
 
 public class Forum {
 
@@ -26,35 +25,23 @@ public class Forum {
         this.statistics = statistics;
     }
 
-    public List<String> usersNames(){
-        return statistics.usersNames();
-    }
-    public int postsCount(){
-        return statistics.postsCount();
-    }
-
-    public int commentsCount(){
-        return  statistics.commentsCount();
-    }
-
     public void calculateAdvStatistics(Statistics statistics) {
-        if (postsCount() == 0) {
+        if (statistics.postsCount() == 0) {
             avaragePostsOnUser = 0;
             avarageCommentsOnPost = 0;
         }
-
-        if (commentsCount() == 0) {
+        if (statistics.commentsCount() == 0) {
             avarageCommentsOnUser = 0;
             avarageCommentsOnPost = 0;
         }
-
-        if (usersNames().size() == 0) {
+        if (statistics.usersNames().size() == 0) {
             avaragePostsOnUser = 0;
             avarageCommentsOnUser = 0;
-        } else {
-            double comments = commentsCount();
-            double users = usersNames().size();
-            double posts = postsCount();
+        }
+        if(statistics.postsCount() != 0 && statistics.commentsCount() != 0 || statistics.usersNames().size() != 0) {
+            double comments = statistics.commentsCount();
+            double users = statistics.usersNames().size();
+            double posts = statistics.postsCount();
             avaragePostsOnUser = posts/users;
             avarageCommentsOnPost = comments/posts;
             avarageCommentsOnUser = comments/users;
