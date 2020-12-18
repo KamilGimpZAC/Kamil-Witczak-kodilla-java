@@ -21,14 +21,6 @@ public class BookLibrary {
     }
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser){
-        List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
-        if(libraryUser.equals(new LibraryUser("Tom", "Hanks", "12345"))){
-                return resultList;
-        }
-        if(libraryUser.equals(new LibraryUser("David", "Morse", "12345"))){
-            return  resultList;
-        }
-        List<Book> outputBooks = resultList;
-        return  outputBooks;
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
     }
 }
