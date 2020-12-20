@@ -92,7 +92,7 @@ public class ForumTestSuite {
     @DisplayName("Test for posts and comments")
     class TestForPostsAndComments {
         @Test
-        void testCalculateAdvStatisticsWhenMorePostsThenComments() {
+        void testWhenMorePostsCalculateAdvStatisticsThenComments() {
             //Given
             Forum forum = new Forum(statistics);
             when(statistics.commentsCount()).thenReturn(10);
