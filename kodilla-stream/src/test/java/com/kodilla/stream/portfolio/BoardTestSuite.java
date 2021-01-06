@@ -153,12 +153,16 @@ class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        long daysTasks = project.getTaskLists().stream()
+        double daysTasks = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(t -> t.getTasks().stream())
                 .map(task -> ChronoUnit.DAYS.between(task.getCreated(),task.getDeadline()))
-                .reduce(0L,(sum, current) -> sum =+ current);
+                .reduce(0L,(sum, current) -> sum += current);
+        double countTasks = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(t -> t.getTasks().stream())
+                .count();
         //Then
-        assertEquals(55,daysTasks);
+        assertEquals(18.333333333333332,daysTasks/countTasks);
     }
 }

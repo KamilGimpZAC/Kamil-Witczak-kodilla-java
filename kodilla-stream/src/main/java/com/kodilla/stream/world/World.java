@@ -12,7 +12,6 @@ public class World {
         World world = new World();
         return continents.stream()
                 .flatMap(Continent -> Continent.getContinents().stream())
-                .flatMap(Country -> Country.getCountries().stream())
                 .map(c -> c.getPeopleQuantity())
                 .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
     }
