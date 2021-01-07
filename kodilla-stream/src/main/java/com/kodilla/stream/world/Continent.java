@@ -6,33 +6,14 @@ import java.util.Objects;
 
 public class Continent {
     private final String continentName;
-    private final List<Country> countries = new ArrayList<>();
+    private final List<Country> countries;
 
-    public Continent(final String continentName) {
+    public Continent(final String continentName, List<Country> countries) {
         this.continentName = continentName;
-        if(Objects.equals(continentName, "Africa")) {
-            countries.add(new Country("Algieria"));
-            countries.add(new Country("Egipt"));
-            countries.add(new Country("Gwinea"));
+        this.countries = countries;
         }
-        if(Objects.equals(continentName, "Asia")) {
-            countries.add(new Country("China"));
-            countries.add(new Country("Japan"));
-            countries.add(new Country("South Korea"));
-        }
-        if(Objects.equals(continentName, "North America")) {
-            countries.add(new Country("United States of America"));
-            countries.add(new Country("Canada"));
-            countries.add(new Country("Mexico"));
-        }
-        if(Objects.equals(continentName, "Europa")) {
-            countries.add(new Country("Poland"));
-            countries.add(new Country("Germany"));
-            countries.add(new Country("France"));
-        }
-    }
 
-    public List<Country> getContinents() {
+    public List<Country> getCountries(){
         return countries;
     }
 }
