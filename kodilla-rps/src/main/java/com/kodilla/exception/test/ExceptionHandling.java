@@ -6,10 +6,8 @@ import com.kodilla.exception.io.FileReaderException;
 public class ExceptionHandling extends Exception{
 
     public static void main(String[] args) {
-        double x = 3;
-        double y = 1;
         try{
-            SecondChallenge.probablyIWillThrowException(x,y);
+            SecondChallenge.probablyIWillThrowException(3,1);
         }
         catch (Exception e){
             System.out.println("Here is exception");
