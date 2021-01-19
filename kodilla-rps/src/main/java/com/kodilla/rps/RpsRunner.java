@@ -34,10 +34,10 @@ public class RpsRunner {
                 Type p1Type = new Type(Integer.parseInt(input.nextLine()));
                 Type AIType = new Type(AI.nextInt(3) + 1);
                 System.out.println("Twój przeciwnik wybrał: " + AIType.getTypeName());
-                if(p1Type.beats(p1Type,AIType)){
+                if(p1Type.beats(AIType)){
                     playerScore.addPoint();
                 }
-                else if(AIType.beats(AIType,p1Type)){
+                else if(AIType.beats(p1Type)){
                     AIScore.addPoint();
                 }
                 i++;

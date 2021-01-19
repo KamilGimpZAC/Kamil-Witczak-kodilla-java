@@ -18,26 +18,26 @@ public class Type {
         return typeName;
     }
 
-    public boolean beats(Type type1, Type type2){
-        if(type1.getTypeName().equals(type2.getTypeName())){
+    public boolean beats(Type type){
+        if(this.typeName.equals(type.getTypeName())){
             return false;
         }
-        if(type1.getTypeName().equals("kamień") && type2.getTypeName().equals("nożyce")){
+        if(this.typeName.equals("kamień") && type.getTypeName().equals("nożyce")){
             return true;
         }
-        if(type1.getTypeName().equals("kamień") && type2.getTypeName().equals("papier")){
+        if(this.typeName.equals("kamień") && type.getTypeName().equals("papier")){
             return false;
         }
-        if(type1.getTypeName().equals("nożyce") && type2.getTypeName().equals("kamień")){
+        if(this.typeName.equals("nożyce") && type.getTypeName().equals("kamień")){
             return false;
         }
-        if(type1.getTypeName().equals("nożyce") && type2.getTypeName().equals("papier")){
+        if(this.typeName.equals("nożyce") && type.getTypeName().equals("papier")){
             return true;
         }
-        if(type1.getTypeName().equals("papier") && type2.getTypeName().equals("kamień")){
+        if(this.typeName.equals("papier") && type.getTypeName().equals("kamień")){
             return true;
         }
-        if(type1.getTypeName().equals("papier") && type2.getTypeName().equals("nożyce")){
+        if(this.typeName.equals("papier") && type.getTypeName().equals("nożyce")){
             return false;
         }
         else
