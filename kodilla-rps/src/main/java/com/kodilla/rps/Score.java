@@ -10,7 +10,8 @@ public class Score {
     }
 
     public void addPoint(){
-        points.add(1);
+        Integer point = 1;
+        points.add(point);
     }
 
     public int getPlayerScore(){

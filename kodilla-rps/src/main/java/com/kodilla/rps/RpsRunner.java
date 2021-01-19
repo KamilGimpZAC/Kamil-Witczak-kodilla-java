@@ -60,6 +60,7 @@ public class RpsRunner {
                     end = true;
                 }
             }
+            i = 0;
         }
     }
 }
