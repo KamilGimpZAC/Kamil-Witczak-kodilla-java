@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.Food2Door;
 
-public class Product {
+public class Product implements FoodProducer{
     private int id;
     private int amount;
 
@@ -9,11 +9,8 @@ public class Product {
         this.amount = amount;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public int getAmount() {
-        return amount;
+    @Override
+    public String getProducts() {
+        return "product id: " + id + " ,amount: " + amount;
     }
 }
