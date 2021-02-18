@@ -1,7 +1,7 @@
 package io.challenge;
 
-import com.kodilla.exception.test.ExceptionHandling;
-import com.kodilla.exception.test.SecondChallenge;
+
+import exception.test.SecondChallenge;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

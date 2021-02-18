@@ -1,5 +1,7 @@
 package io;
 
+import exception.io.FileReader;
+import exception.io.FileReaderException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
