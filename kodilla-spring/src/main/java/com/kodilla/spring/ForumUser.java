@@ -1,4 +1,4 @@
-package com.kodilla.spring.forum;
+package com.kodilla.spring;
 
 import org.springframework.stereotype.Component;
 
