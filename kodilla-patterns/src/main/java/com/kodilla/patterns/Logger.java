@@ -1,4 +1,4 @@
-package com.kodilla.patterns.singleton;
+package com.kodilla.patterns;
 
 public enum Logger {
 
