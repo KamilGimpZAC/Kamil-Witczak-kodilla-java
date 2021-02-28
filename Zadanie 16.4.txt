@@ -1,0 +1,13 @@
+select issueslists.NAME, issues.SUMMARY
+from issueslists join issues on issueslists.ID = issues.ISSUESLIST_ID
+order by issueslists.NAME, issues.SUMMARY;
+
+select i.ID, i.SUMMARY, i.DESCRIPTION, u.FIRSTNAME, u.LASTNAME
+from issues i join users u on i.USER_ID_ASSIGNEDTO = u.ID
+order by i.ID;
+
+select u.FIRSTNAME, u.LASTNAME, count(*) as TASKS_NUMBER
+from users u join issues i on u.ID = i.USER_ID_ASSIGNEDTO
+group by i.USER_ID_ASSIGNEDTO
+having count(*) > 0
+order by U.LASTNAME, U.FIRSTNAME;
