@@ -12,6 +12,10 @@ public final class SimpleInvoice {
         items.add(item);
     }
 
+    public List<SimpleItem> getItems() {
+        return items;
+    }
+
     public boolean removeItem(SimpleItem item) {
         return items.remove(item);
     }
