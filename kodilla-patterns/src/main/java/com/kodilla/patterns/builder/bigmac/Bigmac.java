@@ -2,6 +2,7 @@ package com.kodilla.patterns.builder.bigmac;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Bigmac {
     private final String bum;
@@ -40,6 +41,11 @@ public class Bigmac {
                 ", sauce='" + sauce + '\'' +
                 ", ingredients=" + ingredients +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bum, burgers, sauce, ingredients);
     }
 
     public static class BigmacBuilder {
