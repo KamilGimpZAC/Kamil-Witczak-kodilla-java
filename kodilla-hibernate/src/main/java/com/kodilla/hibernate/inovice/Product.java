@@ -11,12 +11,26 @@ import java.util.List;
 public class Product {
     private int id;
     private String name;
+    private List<Item> items = new ArrayList<>();
+
+    @OneToMany(
+            targetEntity = Item.class,
+            mappedBy = "items",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Item> getItems() {
+        return items;
+    }
+
+    private void setItems(List<Item> items) {
+        this.items = items;
+    }
 
     public Product() {
     }
 
-    public Product(int id, String name) {
-        this.id = id;
+    public Product(String name) {
         this.name = name;
     }
 

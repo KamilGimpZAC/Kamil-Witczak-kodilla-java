@@ -13,13 +13,12 @@ public class Item {
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
+    private Inovice inovice;
 
     public Item() {
     }
 
-    public Item(int id, Product product, BigDecimal price, int quantity, BigDecimal value) {
-        this.id = id;
-        this.product = product;
+    public Item(BigDecimal price, int quantity, BigDecimal value) {
         this.price = price;
         this.quantity = quantity;
         this.value = value;
@@ -37,18 +36,23 @@ public class Item {
         this.id = id;
     }
 
-    //@NotNull
-    //@Column(name = "PRODUCT")
-    @ManyToOne(
-        targetEntity = Product.class,
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
+    @ManyToOne
+    @JoinColumn(name = "INOVICE_ID")
+    public Inovice getInovice() {
+        return inovice;
+    }
+
+    public void setInovice(Inovice inovice) {
+        this.inovice = inovice;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
     }
 
-    private void setProduct(Product product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
