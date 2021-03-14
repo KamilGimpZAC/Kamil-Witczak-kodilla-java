@@ -11,7 +11,7 @@ import java.util.List;
 public class Inovice {
     private int id;
     private String number;
-    private List<Item> items = new ArrayList<>();
+    private List<Item> items2 = new ArrayList<>();
 
     public Inovice() {
     }
@@ -44,15 +44,15 @@ public class Inovice {
 
     @OneToMany(
             targetEntity = Item.class,
-            mappedBy = "items",
+            mappedBy = "inovice",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
     public List<Item> getItems() {
-        return items;
+        return items2;
     }
 
     private void setItems(List<Item> items) {
-        this.items = items;
+        this.items2 = items;
     }
 }

@@ -11,20 +11,20 @@ import java.util.List;
 public class Product {
     private int id;
     private String name;
-    private List<Item> items = new ArrayList<>();
+    private List<Item> items1 = new ArrayList<>();
 
     @OneToMany(
             targetEntity = Item.class,
-            mappedBy = "items",
+            mappedBy = "product",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
     public List<Item> getItems() {
-        return items;
+        return items1;
     }
 
     private void setItems(List<Item> items) {
-        this.items = items;
+        this.items1 = items;
     }
 
     public Product() {
