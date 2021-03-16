@@ -74,18 +74,22 @@ class CompanyDaoTestSuite {
         softwareMachine.getEmployees().add(johnSmith);
         johnSmith.getCompanies().add(softwareMachine);
 
+        employeeDao.save(johnSmith);
+        int johnSmithId = johnSmith.getId();
+
         companyDao.save(softwareMachine);
         int softwareMachineId = softwareMachine.getId();
         //When
-        List<Company> name = companyDao.retrieveCompanyByThreeFirstLetters("softwareMachine");
-        List<Employee> lastname = employeeDao.retrieveEmployeeByLastname("Smith");
+        //List<Company> name = companyDao.retrieveCompanyByThreeFirstLetters("Software Machine");
+        //List<Employee> lastname = employeeDao.retrieveEmployeeByLastname("Smith");
         //Then
-        try {
-            assertEquals(1, name.size());
-            assertEquals(1, lastname.size());
-        } finally {
+        //try {
+            assertEquals(1, companyDao.retrieveCompanyByThreeFirstLetters("Software Machine").size());
+            assertEquals(1, employeeDao.retrieveEmployeeByLastname("Smith").size());
+        //} finally {
             //CleanUp
             companyDao.deleteById(softwareMachineId);
-        }
+            employeeDao.deleteById(johnSmithId);
+        //}
     }
 }
