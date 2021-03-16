@@ -3,9 +3,12 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import net.bytebuddy.agent.builder.AgentBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +17,8 @@ class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany() {
@@ -58,6 +63,29 @@ class CompanyDaoTestSuite {
             companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
            //do nothing
+        }
+    }
+
+    @Test
+    void testNameQueries(){
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Company softwareMachine = new Company("Software Machine");
+        softwareMachine.getEmployees().add(johnSmith);
+        johnSmith.getCompanies().add(softwareMachine);
+
+        companyDao.save(softwareMachine);
+        int softwareMachineId = softwareMachine.getId();
+        //When
+        List<Company> name = companyDao.retrieveCompanyByThreeFirstLetters("softwareMachine");
+        List<Employee> lastname = employeeDao.retrieveEmployeeByLastname("Smith");
+        //Then
+        try {
+            assertEquals(1, name.size());
+            assertEquals(1, lastname.size());
+        } finally {
+            //CleanUp
+            companyDao.deleteById(softwareMachineId);
         }
     }
 }
