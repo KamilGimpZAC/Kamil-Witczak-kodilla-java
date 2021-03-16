@@ -69,23 +69,8 @@ class CompanyDaoTestSuite {
     @Test
     void testNameQueries(){
         //Given
-        Employee johnSmith = new Employee("John", "Smith");
-        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-
         Company softwareMachine = new Company("Software Machine");
         Company dataMaesters = new Company("Data Maesters");
-
-        softwareMachine.getEmployees().add(johnSmith);
-        dataMaesters.getEmployees().add(stephanieClarckson);
-
-        johnSmith.getCompanies().add(softwareMachine);
-        stephanieClarckson.getCompanies().add(dataMaesters);
-
-        employeeDao.save(johnSmith);
-        int johnSmithId = johnSmith.getId();
-
-        employeeDao.save(stephanieClarckson);
-        int stephanieClarcksonId = stephanieClarckson.getId();
 
         companyDao.save(softwareMachine);
         int softwareMachineId = softwareMachine.getId();
@@ -93,15 +78,27 @@ class CompanyDaoTestSuite {
         companyDao.save(dataMaesters);
         int dataMaestersId = dataMaesters.getId();
         //When & Then
-        //try {
-            assertEquals(1, companyDao.retrieveCompanyByThreeFirstLetters("Software Machine").size());
-            assertEquals(1, employeeDao.retrieveEmployeeByLastname("Smith").size());
-        //} finally {
-            //CleanUp
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            employeeDao.deleteById(johnSmithId);
-            employeeDao.deleteById(stephanieClarcksonId);
-        //}
+        assertEquals(1, companyDao.retrieveCompanyByThreeFirstLetters("Software Machine").size());
+        //CleanUp
+        companyDao.deleteById(softwareMachineId);
+        companyDao.deleteById(dataMaestersId);
+    }
+
+    @Test
+    void testNamedQueriesEmployee(){
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+
+        employeeDao.save(johnSmith);
+        int johnSmithId = johnSmith.getId();
+
+        employeeDao.save(stephanieClarckson);
+        int stephanieClarcksonId = stephanieClarckson.getId();
+        //When & Then
+        assertEquals(1, employeeDao.retrieveEmployeeByLastname("Smith").size());
+        //CleanUp
+        employeeDao.deleteById(johnSmithId);
+        employeeDao.deleteById(stephanieClarcksonId);
     }
 }
