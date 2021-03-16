@@ -1,6 +1,5 @@
 package com.kodilla.hibernate.manytomany;
 
-import com.kodilla.hibernate.task.Task;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -9,7 +8,7 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveCompanyByThreeFirstLetters",
-        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME = SUBSTRING(:COMPANY_NAME, 1, 3)",
+        query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,3) = SUBSTRING(:COMPANY_NAME, 1, 3)",
         resultClass = Company.class
 )
 @Entity

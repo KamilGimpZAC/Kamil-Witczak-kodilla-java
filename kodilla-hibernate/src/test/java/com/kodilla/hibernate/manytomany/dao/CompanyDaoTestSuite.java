@@ -67,7 +67,7 @@ class CompanyDaoTestSuite {
     }
 
     @Test
-    void testNameQueries(){
+    void testNameQueriesCompany(){
         //Given
         Company softwareMachine = new Company("Software Machine");
         Company dataMaesters = new Company("Data Maesters");
